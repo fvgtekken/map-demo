@@ -6,7 +6,7 @@ export const metadata = {
 const MainPage = () => {
   return (
     <div className='flex flex-col items-center justify-center w-full h-full'>
-      <h1>Welcome to Test Code Demo, Map Box</h1>
+      <h1>"Welcome to the demo code for Leaflet and Mapbox!"</h1>
     </div>
   );
 };
