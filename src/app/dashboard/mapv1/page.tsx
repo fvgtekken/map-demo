@@ -7,7 +7,7 @@ export const metadata = {
 };
 
 export default function MyMap() {
-  const Map = dynamic(() => import('../../../components/map/MapLazy'), {
+  const Map = dynamic(() => import('../../../components/map/MapAll'), {
     loading: () => <p>Loading Map</p>,
     ssr: false,
   });

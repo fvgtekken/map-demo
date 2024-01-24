@@ -10,6 +10,8 @@ export const metadata = {
 
 // In this version the data is passed to the front end component
 const MyMap = async () => {
+  // console.log('call for server', resData);
+
   const resp = await httpRequest('allCountries');
   const countries = resp.data.data.countries;
   const countriesIndexed: Country = createIndexCountry(countries);

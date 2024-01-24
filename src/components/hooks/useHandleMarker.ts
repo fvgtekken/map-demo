@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { useState } from 'react';
 import { Country, PropsCountry } from '@/types/data';
 import { httpRequest } from '@/service/coutries';
@@ -12,15 +13,13 @@ export const useHandleMarker = (): UseHandleMarker => {
 
   const handleMarkerClick = async (countryCode: string) => {
     try {
-      const res = await httpRequest('codeCountry', countryCode);
-      // response.data.data.country;
-      // console.log('resp countries', res);
-      const countryDetails = res.data.data.country;
+      const resp = await axios.post('/api/map', { typeQuery: 'codeCountry', countryCode });
+      const { country } = resp.data.data.data;
 
       setDetailCountry((prev) => {
         return {
           ...prev,
-          [countryCode]: { ...countryDetails },
+          [countryCode]: { ...country },
         };
       });
 

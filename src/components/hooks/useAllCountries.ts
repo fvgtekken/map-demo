@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { httpRequest } from '@/service/coutries';
 import { Country } from '@/types/data';
 import { createIndexCountry } from '@/utils/indexCountry';
@@ -9,8 +10,8 @@ export const useAllCountries = (): Country => {
   useEffect(() => {
     const getAllCountries = async () => {
       try {
-        const resp = await httpRequest('allCountries');
-        const countries = resp.data.data.countries;
+        const resp = await axios.post('/api/map', { typeQuery: 'allCountries' });
+        const { countries } = resp.data.data.data;
         const countriesIndexed: Country = createIndexCountry(countries);
         //console.log('aqui estan', countriesIndexed);
         setAllCountries(countriesIndexed);
